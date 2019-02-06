@@ -1,5 +1,4 @@
-
-function jacobi(a,b,n)
+function siedal(a,b,n)
     [row,col] = size(a)
 //    for i = 1:row
 //        if a(i,i) == 0
@@ -8,18 +7,20 @@ function jacobi(a,b,n)
 //    end
 
     for i = 1:row
-        c(i) = 0;
+        x(i) = 0;
     end
 
-    for k = 1:15*n
+    for k = 1:3*n
+        
         for i = 1:row
+            x(i) = 0
             for j = 1:col
                 if i ~= j 
-                    c(i) = c(i) + c(j)*a(i,j);
+                    x(i) = x(i) + x(j)*a(i,j);
                 end
             end
-            c(i) = (b(i) - c(i))/a(i,i);
+            x(i) = (b(i) - x(i))/a(i,i);
         end
-        disp(c)
+        disp(x)
     end
 endfunction
